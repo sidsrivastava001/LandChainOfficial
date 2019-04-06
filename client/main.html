@@ -1,0 +1,32 @@
+<head>
+  <title>simple-todos</title>
+</head>
+
+<body>
+  <div class = "container">
+    <header>
+      <h1>LandChain: A Blockchain for Land Transactions</h1>
+      {{> loginButtons}}
+        {{#if currentUser}}
+        <form class="issuenew">
+          <input type="text" name="text" placeholder="Register New Asset" />
+        </form>
+        {{/if}}
+    </header>
+    {{#if currentUser}}
+    <div class="list-group">
+    {{#each counter}}
+      <input type="radio" name="asset_button" value="{{name}}">{{name}}<br>
+    {{/each}}
+    </div>
+    <form class="transactasset">
+      <select name="user">
+        {{#each returnAllUsers}}
+          <option value="username">{{username}}</option>
+        {{/each}}
+      </select>
+      <input type="submit" value="Send">
+    </form>
+    {{/if}}
+  </div>
+</body>
