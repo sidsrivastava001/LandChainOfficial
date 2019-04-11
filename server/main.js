@@ -11,7 +11,8 @@ const connection = {
 };
 
 const googleMapsClient = require('@google/maps').createClient({
-  key: "AIzaSyDK_WE6H2MK6KUwKXWj5_GKNk7PI7Rg1yc"
+  key: "AIzaSyDK_WE6H2MK6KUwKXWj5_GKNk7PI7Rg1yc",
+  Promise: Promise
 });
 Accounts.onCreateUser((options, user) => {
   const new_address = Promise.await(multichain.getNewAddress());
@@ -36,9 +37,8 @@ Meteor.methods({
       if(!Meteor.userId()) {
         throw new Meteor.Error(401, 'you must be logged in!');
       }
-      multichain.issue({address: Meteor.user().multichain_address, asset: name, qty: 1, units: 1, details: {hello: "world"}}, (err, res) => {
-          //console.log(res);
-      })
+      const newAsset = Promise.await(multichain.issue({address: Meteor.user().multichain_address, asset: name, qty: 1, units: 1, details: {hello: "world"}}));
+      return newAsset;
     },
     transact(assetName, user) {
       //console.log("User", user);
@@ -51,11 +51,14 @@ Meteor.methods({
       //  console.log(err);
       })
     },
-    geoLocate() {
-      googleMapsClient.geocode({address: '10 Jayhawk Way, Holmdel, NJ'}, function(err, response) {
-      console.log(err);
-      console.log(response.json.results[0].geometry.location.lat);
-    });
+    geoLocate(assetAddress) {
+      const myLatLong = Promise.await(googleMapsClient.geocode({address: assetAddress}).asPromise());
+      console.log(myLatLong.json.results[0].geometry.location);
+      return myLatLong.json.results[0];
+    },
+  getAsset(asset) {
+    const assetInfo = multichain.getAssetInfo({address: asset});
+    return assetInfo;
   }
 })
 Meteor.startup(() => {
