@@ -1,6 +1,6 @@
 body {
-  font-family: sans-serif;
-  background: linear-gradient(to bottom, #a8c0ff, #3f2b96 100%);
+  font-family: "Segoe UI", Arial;
+  background: blanchedalmond url("new-york-city-1030778.jpg") no-repeat scroll;
   background-attachment: fixed;
 
   position: absolute;
@@ -11,8 +11,8 @@ body {
 
   padding: 0;
   margin: 0;
-
   font-size: 14px;
+  color:black;
 }
 header {
 
@@ -29,10 +29,8 @@ h1 {
 
   margin-bottom: 10px;
 
-  display: inline-block;
 
-  margin-right: 1em;
-
+  text-align: center;
 }
 .container {
 
@@ -40,16 +38,34 @@ h1 {
 
   min-height: 100;
 
-  background: lightblue;
+  background: blanchedalmond;
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   border-radius: 25px;
-  border: 2px solid #73AD21;
-
+  background-color: #FE7860;
 }
-
+.paragraph {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+select {
+  width: 100%;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+}
+input[type=text] {
+  width: 100%;
+  margin: 8px 0;
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #f1f1f1;
+}
 
 ul {
 
@@ -61,5 +77,72 @@ ul {
 
 }
 #login-buttons {
+  text-align: center;
+  margin-top: 70;
+  margin-bottom: 70;
   display: block;
+}
+.map-container {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  width: 300px;
+  max-width: 100%;
+  height: 300px;
+}
+.list-group {
+  min-height: 200px;
+  height: 200px;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  max-height: auto;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.form-radio
+{
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     display: inline-block;
+     position: relative;
+     background-color: #f1f1f1;
+     color: #666;
+     top: 3px;
+     right: 5px;
+     height: 20px;
+     width: 20px;
+     border: 0;
+     border-radius: 20px;
+     cursor: pointer;
+     margin-right: 7px;
+     outline: none;
+     padding-right: 15px;
+}
+.form-radio:checked::before
+{
+     position: absolute;
+     font: 13px/1 'Open Sans', sans-serif;
+     left: 6px;
+     top: 3px;
+     content: '\02143';
+     transform: rotate(40deg);
+}
+.form-radio:hover
+{
+     background-color: #f7f7f7;
+}
+.form-radio:checked
+{
+     background-color: #f1f1f1;
+}
+.paragraph {
+  text-align: center;
+  margin-top: 70;
+  margin-bottom: 70;
+}
+.send {
+  margin-top:20px;
+  margin-bottom:20px;
 }
