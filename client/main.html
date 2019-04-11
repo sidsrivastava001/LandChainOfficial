@@ -1,7 +1,11 @@
 <head>
   <title>simple-todos</title>
 </head>
-
+<template name="map">
+  <div class="map-container">
+    {{> googleMap name="map" options=mapOptions}}
+  </div>
+</template>
 <body>
   <div class = "container">
     <header>
@@ -11,14 +15,28 @@
         <form class="issuenew">
           <input type="text" name="text" placeholder="Register New Asset" />
         </form>
+        {{#if returnForm}}
+        <form class="issueasset">
+          <input type="button" value="Submit Asset"/>
+        </form>
+        {{/if}}
+        {{#if errorReturn}}
+        Asset Registration Error!
+        {{/if}}
+        {{> map}}
+        {{else}}
+        <div class="paragraph">
+          <p>Welcome to LandChain, a blockchain web app for land registration. Start off by creating an account.</p>
+        </div>
         {{/if}}
     </header>
     {{#if currentUser}}
     <div class="list-group">
     {{#each counter}}
-      <input type="radio" name="asset_button" value="{{name}}">{{name}}<br>
+      <input type="radio" name="asset_button" value="{{name}}" class="form-radio">{{name}}<br>
     {{/each}}
     </div>
+    <div class="send">
     <form class="transactasset">
       <select name="user">
         {{#each returnAllUsers}}
@@ -27,6 +45,7 @@
       </select>
       <input type="submit" value="Send">
     </form>
+    </div>
     {{/if}}
   </div>
 </body>
